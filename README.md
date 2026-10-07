@@ -22,6 +22,41 @@
 
 ## Файлы
 
-- `main.cpp` — точка входа; здесь будет меню программы.
+- `main.cpp` — точка входа и меню программы.
 - `src/array_ops.hpp` и `src/array_ops.cpp` — объявления и реализации операций с массивом.
-- `tests/` — тесты.
+- `tests/test_funcs.cpp` — тесты базовых операций с массивом.
+- `tests/test_variant.cpp` — тесты алгоритмов варианта 4.
+- `CMakeLists.txt` — настройки сборки программы, библиотеки и тестов.
+
+## Сборка и запуск
+
+Требуются компилятор с поддержкой C++20 и CMake 3.16 или новее. Google Test 1.17.0 загружается автоматически при первой настройке сборки, для этого нужен интернет.
+
+Команды выполняются из каталога лабораторной:
+
+```sh
+cmake -S . -B build
+cmake --build build
+./build/lab1
+```
+
+## Тесты
+
+```sh
+ctest --test-dir build --output-on-failure
+```
+
+Для CMake 3.16–3.19 запускать CTest нужно из каталога сборки:
+
+```sh
+cd build
+ctest --output-on-failure
+```
+
+Для сборки только программы, без загрузки Google Test:
+
+```sh
+cmake -S . -B build-app -DBUILD_TESTING=OFF
+cmake --build build-app
+./build-app/lab1
+```
